@@ -1,0 +1,38 @@
+Private Sub hola()
+
+Dim hoja As Worksheet
+Set hoja = ThisWorkbook.Sheets("Hoja1")
+Dim fuente As Worksheet
+Set fuente = ThisWorkbook.Sheets("Hoja2")
+
+
+For i = 3 To 11187
+If fuente.Cells(i, 1) = "" Then
+GoTo final
+End If
+    For j = 1 To 200
+        
+        If fuente.Cells(i, 1) = hoja.Cells(1, j) Then
+            For x = 2 To 2000
+                If hoja.Cells(x, j) = "" Then
+                    hoja.Cells(x, j) = fuente.Cells(i, 2)
+                    GoTo acabe
+                End If
+            Next x
+acabe:
+        GoTo volvi
+        End If
+        
+    Next j
+volvi:
+Next i
+
+final:
+
+
+
+End Sub
+
+
+
+
