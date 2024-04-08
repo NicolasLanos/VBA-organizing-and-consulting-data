@@ -1,0 +1,59 @@
+Private Sub hola()
+
+Dim hoja As Worksheet
+Set hoja = ThisWorkbook.Sheets("Hoja1")
+    
+
+    
+For i = 4 To 170
+
+
+
+    '#busco si la celda de categoria existe
+    If ThisWorkbook.Sheets("Sectores-Programas-Subprogramas").Cells(i, 1) <> "" Then
+        'busco columnas vacias en la hoja resultado
+        For j = 1 To 1000
+            If hoja.Cells(1, j) = "" Then
+                hoja.Cells(1, j) = ThisWorkbook.Sheets("Sectores-Programas-Subprogramas").Cells(i, 7).Value
+                hoja.Cells(2, j) = ThisWorkbook.Sheets("Sectores-Programas-Subprogramas").Cells(i, 2).Value
+                hoja.Cells(3, j) = ThisWorkbook.Sheets("Sectores-Programas-Subprogramas").Cells(i, 4).Value
+                
+                For x = i + 1 To 500
+                
+                
+                    If ThisWorkbook.Sheets("Sectores-Programas-Subprogramas").Cells(x, 2) = "" Then
+                        For y = 4 To 50
+                            If hoja.Cells(y, j) = "" Then
+                                hoja.Cells(y, j) = ThisWorkbook.Sheets("Sectores-Programas-Subprogramas").Cells(x, 4).Value
+                                GoTo santamarta
+                            End If
+                        Next y
+santamarta:
+                        
+                    ElseIf ThisWorkbook.Sheets("Sectores-Programas-Subprogramas").Cells(i, 2) <> "" Then
+                        GoTo bogota
+                    End If
+                    
+                    
+                    
+                Next x
+bogota:
+                GoTo cali
+            End If
+    
+        Next j
+cali:
+    
+    End If
+
+
+Next i
+
+
+
+
+End Sub
+
+
+
+
