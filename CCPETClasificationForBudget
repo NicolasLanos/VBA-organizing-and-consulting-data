@@ -1,0 +1,77 @@
+Private Sub organizacion()
+Dim fuente As Worksheet
+Set fuente = ThisWorkbook.Sheets("hoja1")
+Dim destino As Worksheet
+Set destino = ThisWorkbook.Sheets("CCPET8")
+
+
+
+For i = 1 To 504
+    If fuente.Cells(i, 2).Value = "10" Then
+        For j = 1 To 1000
+            If destino.Cells(1, j) = "" Then
+                destino.Cells(1, j) = fuente.Cells(i, 1)
+                GoTo fin
+            End If
+        Next j
+fin:
+    End If
+Next i
+
+
+
+
+End Sub
+Private Sub creacionDeListas()
+Dim fuente As Worksheet
+Set fuente = ThisWorkbook.Sheets("CCPET7")
+Dim destino As Worksheet
+Set destino = ThisWorkbook.Sheets("CCPET8")
+
+
+
+
+For i = 1 To 500
+If fuente.Cells(1, i) = "" Then
+GoTo boyaca
+End If
+For j = 1 To 500
+
+
+    If InStr(1, destino.Cells(1, j).Value, fuente.Cells(1, i).Value, vbTextCompare) > 0 Then
+        For x = 2 To 100
+            If fuente.Cells(x, i) = "" Then
+                fuente.Cells(x, i) = destino.Cells(1, j)
+                GoTo afuera
+            End If
+        Next x
+afuera:
+    Else
+        
+    End If
+
+Next j
+Next i
+boyaca:
+End Sub
+
+Private Sub agregarTextoPorCodigo()
+Dim directorio As Worksheet
+Set directorio = ThisWorkbook.Sheets("fuente")
+Dim destino As Worksheet
+Set destino = ThisWorkbook.Sheets("CCPET8")
+
+For i = 1 To 200
+    For j = 1 To 50
+        If destino.Cells(i, j) <> "" Then
+            For x = 1 To 600
+                If destino.Cells(i, j) = directorio.Cells(x, 1) Then
+                    destino.Cells(i, j) = directorio.Cells(x, 2)
+                    GoTo outside
+                End If
+            Next x
+outside:
+        End If
+    Next j
+Next i
+End Sub
