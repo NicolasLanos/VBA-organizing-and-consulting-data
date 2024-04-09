@@ -1,0 +1,78 @@
+Private Sub creacionDeListas()
+    Dim fuente As Worksheet
+    Set fuente = ThisWorkbook.Sheets("CPC2")
+    Dim destino As Worksheet
+    Set destino = ThisWorkbook.Sheets("CPC3")
+    
+    Dim i As Long, j As Long, x As Long
+    Dim sourceValue As String
+    Dim destValue As String
+    Dim sourcePrefix As String
+    Dim destPrefix As String
+    
+    For i = 1 To 10000
+        If fuente.Cells(1, i) = "" Then Exit For ' Exit loop if no more values in source column
+        
+        ' Convert source value to text and extract the first two characters
+        sourceValue = CStr(fuente.Cells(1, i).Value)
+        If Len(sourceValue) < 2 Then GoTo boyaca ' Skip if source value has less than two characters
+        sourcePrefix = Left(sourceValue, 2)
+        
+        For j = 1 To 10000
+            If destino.Cells(1, j) = "" Then Exit For ' Exit loop if no more values in destination column
+            
+            ' Convert destination value to text and extract the first two characters
+            destValue = CStr(destino.Cells(1, j).Value)
+            If Len(destValue) < 2 Then GoTo afuera ' Skip if destination value has less than two characters
+            destPrefix = Left(destValue, 2)
+            
+            ' Check if the first two characters of both values are the same
+            If sourcePrefix = destPrefix Then
+                ' Check if the source value is included in the destination value
+                If InStr(1, destValue, sourceValue, vbTextCompare) > 0 Then
+                    ' Find the next available row in the source column and copy the destination value
+                    For x = 2 To 10000
+                        If fuente.Cells(x, i) = "" Then
+                            fuente.Cells(x, i).Value = destValue
+                            Exit For ' Exit loop once value is copied
+                        End If
+                    Next x
+                End If
+            End If
+afuera:
+        Next j
+    Next i
+boyaca:
+End Sub
+Private Sub agregar0()
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("fuente")
+    Dim hoja As Worksheet
+    Set hoja = ThisWorkbook.Sheets("CPC2")
+a = 2
+For i = 110 To 1305
+For j = 2 To 145
+    If hoja.Cells(j, i).Value = "" Then
+        GoTo martin
+
+    End If
+    If hoja.Cells(j, i).Value <> "" Then
+        For x = a To 12527
+            If hoja.Cells(j, i).Value = sh.Cells(x, 2).Value Then
+                hoja.Cells(j, i).Value = hoja.Cells(j, i).Value & " " & sh.Cells(x, 4).Value
+                a = x
+                GoTo santi
+            End If
+        Next x
+
+    End If
+santi:
+Next j
+martin:
+Next i
+
+
+End Sub
+
+
+
