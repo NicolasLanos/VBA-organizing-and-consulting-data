@@ -1,0 +1,297 @@
+Private Sub ComboBox1_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CCPET1")
+    Dim i As Integer
+    Dim n As Integer
+    Dim subprograma As String
+    
+                spaceIndex1 = InStr(Me.ComboBox1.Value, " ")
+
+            
+            If spaceIndex1 > 0 Then
+                ' Extract the text until the first blank space and display it
+                 Me.Label10.Caption = Left(Me.ComboBox1.Value, spaceIndex1 - 1)
+            End If
+
+    
+    For w = 1 To 10000
+        If Me.ComboBox1.Value = sh.Cells(1, w) Then
+            n = w
+            GoTo salida2
+        End If
+                If w = 99999 Then
+            n = 99999
+        End If
+    Next w
+salida2:
+    
+    
+    
+    Me.ComboBox2.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, n).EntireColumn)
+        Me.ComboBox2.AddItem sh.Cells(i, n).Value
+    Next i
+land:
+End Sub
+Private Sub ComboBox2_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CCPET2")
+    Dim i As Integer
+    Dim n As Integer
+
+            spaceIndex1 = InStr(Me.ComboBox2.Value, " ")
+
+            
+            If spaceIndex1 > 0 Then
+                ' Extract the text until the first blank space and display it
+                 Me.Label10.Caption = Left(Me.ComboBox2.Value, spaceIndex1 - 1)
+            End If
+
+
+    For w = 1 To 10000
+        If Me.ComboBox2.Value = sh.Cells(1, w) Then
+            n = w
+            GoTo salida3
+        End If
+                If w = 99999 Then
+            n = 99999
+        End If
+    Next w
+salida3:
+
+    Me.ComboBox3.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, n).EntireColumn)
+        Me.ComboBox3.AddItem sh.Cells(i, n).Value
+    Next i
+land:
+End Sub
+Private Sub ComboBox3_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CCPET3")
+    Dim i As Integer
+    Dim n As Integer
+
+            spaceIndex1 = InStr(Me.ComboBox3.Value, " ")
+
+            
+            If spaceIndex1 > 0 Then
+                ' Extract the text until the first blank space and display it
+                 Me.Label10.Caption = Left(Me.ComboBox3.Value, spaceIndex1 - 1)
+            End If
+
+
+    For w = 1 To 10000
+        If Me.ComboBox3.Value = sh.Cells(1, w) Then
+            n = w
+            GoTo salida4
+        End If
+        If w = 99999 Then
+            n = 99999
+        End If
+    Next w
+salida4:
+
+    Me.ComboBox4.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, n).EntireColumn)
+        Me.ComboBox4.AddItem sh.Cells(i, n).Value
+    Next i
+land:
+    
+End Sub
+Private Sub ComboBox4_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CCPET4")
+    Dim i As Integer
+    Dim n As Integer
+
+            spaceIndex1 = InStr(Me.ComboBox4.Value, " ")
+
+            
+            If spaceIndex1 > 0 Then
+                ' Extract the text until the first blank space and display it
+                 Me.Label10.Caption = Left(Me.ComboBox4.Value, spaceIndex1 - 1)
+            End If
+
+
+    For w = 1 To 10000
+        If Me.ComboBox4.Value = sh.Cells(1, w) Then
+            n = w
+            GoTo salida5
+        End If
+                If w = 99999 Then
+            n = 99999
+        End If
+    Next w
+salida5:
+
+    Me.ComboBox5.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, n).EntireColumn)
+        Me.ComboBox5.AddItem sh.Cells(i, n).Value
+    Next i
+land:
+End Sub
+Private Sub ComboBox5_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CCPET5")
+    Dim i As Integer
+    Dim n As Integer
+    
+                spaceIndex1 = InStr(Me.ComboBox5.Value, " ")
+
+            
+            If spaceIndex1 > 0 Then
+                ' Extract the text until the first blank space and display it
+                 Me.Label10.Caption = Left(Me.ComboBox5.Value, spaceIndex1 - 1)
+            End If
+
+
+    For w = 1 To 10000
+        If Me.ComboBox5.Value = sh.Cells(1, w) Then
+            n = w
+            GoTo salida6
+        End If
+                If w = 99999 Then
+            n = 99999
+        End If
+    Next w
+salida6:
+
+    Me.ComboBox6.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, n).EntireColumn)
+        Me.ComboBox6.AddItem sh.Cells(i, n).Value
+    Next i
+land:
+End Sub
+Private Sub ComboBox6_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CCPET6")
+    Dim i As Integer
+    Dim n As Integer
+    
+                spaceIndex1 = InStr(Me.ComboBox6.Value, " ")
+
+            
+            If spaceIndex1 > 0 Then
+                ' Extract the text until the first blank space and display it
+                 Me.Label10.Caption = Left(Me.ComboBox6.Value, spaceIndex1 - 1)
+            End If
+
+
+    For w = 1 To 10000
+        If Me.ComboBox6.Value = sh.Cells(1, w) Then
+            n = w
+            GoTo salida7
+        End If
+                If w = 99999 Then
+            n = 99999
+        End If
+    Next w
+salida7:
+
+    Me.ComboBox7.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, n).EntireColumn)
+        Me.ComboBox7.AddItem sh.Cells(i, n).Value
+    Next i
+land:
+End Sub
+Private Sub ComboBox7_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CCPET7")
+    Dim i As Integer
+    Dim n As Integer
+    
+            spaceIndex1 = InStr(Me.ComboBox7.Value, " ")
+
+            
+            If spaceIndex1 > 0 Then
+                ' Extract the text until the first blank space and display it
+                 Me.Label10.Caption = Left(Me.ComboBox7.Value, spaceIndex1 - 1)
+            End If
+
+
+    For w = 1 To 10000
+        If Me.ComboBox7.Value = sh.Cells(1, w) Then
+            n = w
+            GoTo salida8
+        End If
+                If w = 99999 Then
+            n = 99999
+        End If
+    Next w
+salida8:
+
+    Me.ComboBox8.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, n).EntireColumn)
+        Me.ComboBox8.AddItem sh.Cells(i, n).Value
+    Next i
+land:
+    
+End Sub
+Private Sub UserForm_Activate()
+Dim sh As Worksheet
+Set sh = ThisWorkbook.Sheets("CCPET1")
+
+Dim i As Integer
+
+Me.ComboBox1.Clear
+For i = 1 To Application.WorksheetFunction.CountA(sh.Range("unoccpet"))
+    Me.ComboBox1.AddItem sh.Cells(1, i).Value
+Next i
+
+End Sub
+Private Sub CommandButton1_Click()
+
+Dim sh As Worksheet
+Set sh = ThisWorkbook.Sheets("HERRAMIENTA")
+
+
+
+
+
+    For i = 4 To 10000
+        If sh.Cells(i, 13) = "" Then
+            sh.Cells(i, 13) = Me.ComboBox1.Value
+            sh.Cells(i, 14) = Me.ComboBox2.Value
+            sh.Cells(i, 15) = Me.ComboBox3.Value
+            sh.Cells(i, 16) = Me.ComboBox4.Value
+            sh.Cells(i, 17) = Me.ComboBox5.Value
+            sh.Cells(i, 18) = Me.ComboBox6.Value
+            sh.Cells(i, 19) = Me.ComboBox7.Value
+            sh.Cells(i, 20) = Me.ComboBox8.Value
+
+            If Me.ComboBox8 <> "" Then
+            
+                        spaceIndex1 = InStr(Me.ComboBox8.Value, " ")
+
+            
+                        If spaceIndex1 > 0 Then
+                            ' Extract the text until the first blank space and display it
+                             Me.Label10.Caption = Left(Me.ComboBox8.Value, spaceIndex1 - 1)
+                        End If
+
+            
+            End If
+            
+            
+
+            sh.Cells(i, 22) = Me.Label10.Caption
+            GoTo rojo
+        End If
+    Next i
+
+rojo:
+
+
+
+UserForm2.Hide
+UserForm3.Show
+End Sub
+
+
