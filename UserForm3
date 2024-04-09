@@ -1,0 +1,123 @@
+Private Sub ComboBox1_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CPC1")
+    Dim i As Integer
+    Dim n As Integer
+
+
+If Me.ComboBox1.Value = "NO" Then
+    Me.ComboBox2.Clear
+    Me.ComboBox3.Clear
+    Me.ComboBox4.Clear
+End If
+
+If Me.ComboBox1.Value = "SI" Then
+
+    For i = 1 To Application.WorksheetFunction.CountA(sh.Range("unocpc"))
+        Me.ComboBox2.AddItem sh.Cells(1, i).Value
+    Next i
+
+End If
+
+land:
+End Sub
+Private Sub ComboBox2_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CPC1")
+    Dim i As Integer
+    Dim m As Integer
+
+    For w = 1 To 1000
+        If Me.ComboBox2.Value = sh.Cells(1, w) Then
+            m = w
+            GoTo salida1
+        End If
+    Next w
+salida1:
+
+    Me.ComboBox3.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, m).EntireColumn)
+        Me.ComboBox3.AddItem sh.Cells(i, m).Value
+    Next i
+land:
+End Sub
+Private Sub ComboBox3_Change()
+On Error GoTo land
+    Dim sh As Worksheet
+    Set sh = ThisWorkbook.Sheets("CPC2")
+    Dim i As Integer
+    Dim m As Integer
+
+    For w = 1 To 1000
+        If Me.ComboBox3.Value = sh.Cells(1, w) Then
+            m = w
+            GoTo salida1
+        End If
+    Next w
+salida1:
+
+    Me.ComboBox4.Clear
+    For i = 2 To Application.WorksheetFunction.CountA(sh.Cells(1, m).EntireColumn)
+        Me.ComboBox4.AddItem sh.Cells(i, m).Value
+    Next i
+land:
+End Sub
+
+
+
+Private Sub UserForm_Activate()
+
+Dim i As String
+Dim j As String
+i = "SI"
+j = "NO"
+Me.ComboBox1.Clear
+Me.ComboBox1.AddItem i
+Me.ComboBox1.AddItem j
+
+
+End Sub
+Private Sub CommandButton1_Click()
+
+Dim sh As Worksheet
+Set sh = ThisWorkbook.Sheets("HERRAMIENTA")
+
+Dim uno As String
+Dim dos As String
+Dim tres As String
+
+Me.ComboBox4.Value = CStr(Me.ComboBox4)
+
+
+
+    For i = 4 To 10000
+        If sh.Cells(i, 23) = "" Then
+            sh.Cells(i, 23) = Me.ComboBox1.Value
+            sh.Cells(i, 24) = Me.ComboBox2.Value
+            sh.Cells(i, 25) = Me.ComboBox3.Value
+            sh.Cells(i, 26) = Me.ComboBox4.Value
+            
+            spaceIndex1 = InStr(Me.ComboBox4.Value, " ")
+         
+            
+            If spaceIndex1 > 0 Then
+                ' Extract the text until the first blank space and display it
+                 sh.Cells(i, 27).Value = Left(Me.ComboBox4, spaceIndex1 - 1)
+                 
+            End If
+            
+            sh.Cells(i, 32).Value = sh.Cells(i, 12).Value & "." & sh.Cells(i, 22).Value & "." & sh.Cells(i, 27).Value
+            
+            GoTo rojo
+        End If
+    Next i
+
+rojo:
+
+
+
+UserForm3.Hide
+
+End Sub
